@@ -25,8 +25,8 @@ sysctl --system
 
 
 
-apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+yum update && yum install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | yum add -
 
 add-apt-repository \
   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -38,7 +38,7 @@ swapoff -a
 # Install Docker CE
 ## Set up the repository:
 ### Install packages to allow apt to use a repository over HTTPS
-apt-get update && apt-get install -y \
+yum update && yum install -y \
   apt-transport-https ca-certificates curl software-properties-common gnupg2
 
 ### Add Docker’s official GPG key
@@ -51,7 +51,7 @@ add-apt-repository \
   stable"
 
 ## Install Docker CE.
-apt-get update && apt-get install -y \
+yum update && yum install -y \
   containerd.io=1.2.13-1 \
   docker-ce=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) \
   docker-ce-cli=5:19.03.8~3-0~ubuntu-$(lsb_release -cs)
@@ -76,13 +76,13 @@ systemctl restart docker
 
 
 
-sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+sudo yum update && sudo yum install -y apt-transport-https curl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo yum update
+sudo yum install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
 
